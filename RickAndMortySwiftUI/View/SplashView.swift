@@ -11,7 +11,9 @@ struct SplashView: View {
     @State private var isActive = false
     @State private var size = 0.8
     @State private var opacity = 0.5
-    @State private var splashText = "Hoş Geldiniz!"
+    @State private var isFirst = UserDefaults.standard.bool(forKey: "splash")
+     
+    
     
     var body: some View {
         if isActive{
@@ -34,21 +36,28 @@ struct SplashView: View {
                             self.opacity = 1.0
                         }
                     }
-                    Text(splashText)
-                        .font(.title)
-                        .fontWeight(.light)
-                        .foregroundColor(Color.RMpurple)
-                        
-                    
+                    if isFirst{
+                        Text("Hello!")
+                            .font(.title)
+                            .fontWeight(.light)
+                            .foregroundColor(Color.RMpurple)
+                    }else{
+                        Text("Welcome!")
+                            .font(.title)
+                            .fontWeight(.light)
+                            .foregroundColor(Color.RMpurple)
+                    } 
                 }
                 .frame(width: UIScreen.main.bounds.width*1, height: UIScreen.main.bounds.height*1)
                 .onAppear{
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
                         self.isActive = true
-                        self.splashText = "Tekrardan Merhaba!"
+                        UserDefaults.standard.set(true, forKey: "splash")
                         
                     }
+                    
                 }
+                
                 .background(Color.RMbackground)
             }
             

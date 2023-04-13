@@ -51,7 +51,7 @@ struct ListView: View {
                                         VStack(alignment: .leading) {
                                             Text(item.name)
                                                 .foregroundColor(Color.RMpurple).opacity(0.8)
-                                                .font(.title)
+                                                .font(.custom("Quicksand", size: 26))
                                                 .fontWeight(.bold)
                                                 .multilineTextAlignment(.center)
                                         }
