@@ -31,8 +31,7 @@ struct AppView: View{
             }
             .background(Color.RMbackground)
         }
-        
-        .accentColor(Color.RMgreen)
+        .accentColor(Color.RMpurple)
     }
 }
 struct AppView_Previews: PreviewProvider {

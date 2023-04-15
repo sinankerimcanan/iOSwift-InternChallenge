@@ -22,7 +22,8 @@ struct DetailView: View {
                     VStack{
                         Text(item.name)
                             .font(.custom("DynaPuff", size: 35))
-                            .padding(.top ,UIScreen.main.bounds.height/11)
+                            .padding(.top,35)
+                            .multilineTextAlignment(.center)
                         AsyncImage(url: URL(string: item.image)) { phase in
                             switch phase {
                             case .empty:
@@ -39,19 +40,26 @@ struct DetailView: View {
                                 fatalError()
                             }
                         }
+                        .padding(.horizontal, 50)
+                        .padding(.vertical , 20)
                     }
                     .onAppear{
                     }
-                    VStack(alignment: .leading , spacing: 10){
-                        textCell(title: "Status:", content: item.status)
-                        textCell(title: "Specy:", content: item.species)
-                        textCell(title: "Gender:", content: item.gender)
-                        textCell(title: "Origin:", content: item.origin.name)
-                        textCell(title: "Location:", content: item.location.name)
-                        textCell(title: "Episodes:", content: viewModel.generationUrl(urls: item.episode))
-                        textCell(title: "Created at \n(in API):", content: item.created)
+                    ScrollView(.vertical , showsIndicators: false) {
+                        VStack(alignment: .leading , spacing: 10){
+                            textCell(title: "Status:", content: item.status)
+                            textCell(title: "Specy:", content: item.species)
+                            textCell(title: "Gender:", content: item.gender)
+                            textCell(title: "Origin:", content: item.origin.name)
+                            textCell(title: "Location:", content: item.location.name)
+                            textCell(title: "Episodes:", content: viewModel.generationUrl(urls: item.episode))
+                            textCell(title: "Created at \n(in API):", content: item.created)
+                                .padding(.bottom , 20)
+                        }
+                        .padding(.horizontal, 20)
                     }
-                    .padding(.horizontal, 20)
+                    Spacer()
+                    
                 }
                 else {
                     VStack {
@@ -67,23 +75,20 @@ struct DetailView: View {
                             .multilineTextAlignment(.center)
                             .padding(.top,10)
                     }
-                    .padding(.top , 35)
+                    
                 }
-                //                Text("Character ID:\(url)")
-                //                    .background(Color.red)
-                Spacer()
             }
             .onAppear{
                 print("Detail View Açıldı")
                 viewModel.loadCharacteData(url: url)
             }
-            .toolbar{
-                ToolbarItem(placement: .navigation) {
-                    Image("Rick_and_Morty")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                }
-            }
+//            .toolbar{
+//                ToolbarItem(placement: .navigation) {
+//                    Image("Rick_and_Morty")
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fit)
+//                }
+//            }
             .padding(.top)
             .frame(width: UIScreen.main.bounds.width*1, height: UIScreen.main.bounds.height*1)
             .background(Color.RMbackground)
