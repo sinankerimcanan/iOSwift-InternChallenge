@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-class RMLocationViewModel: ObservableObject {
+protocol RMSliderTabBarViewModelInterface {
+    func loadData()
+}
+
+class RMSliderTabBarViewModel: ObservableObject {
     @Published var info: RMInfo?
     @Published var results: [RMResults]?
     private var cancellables = Set<AnyCancellable>()
@@ -16,6 +20,9 @@ class RMLocationViewModel: ObservableObject {
     init() {
         loadData()
     }
+}
+
+extension RMSliderTabBarViewModel : RMSliderTabBarViewModelInterface{
     //MARK: Page1 deki bütün location verilerini çeken Func
     func loadData() {
         guard let url = URL(string: "https://rickandmortyapi.com/api/location") else {

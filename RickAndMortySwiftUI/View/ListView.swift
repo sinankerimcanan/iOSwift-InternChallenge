@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ListView: View {
-    @StateObject var viewModel = RMLocationViewModel()
-    @StateObject var viewModelCH = RMCharactersViewModel()
+    @StateObject var viewModelCH = RMListViewModel()
     @State var selectedItemID : Int = 1 //ID
     @State private var isLoading = true
     
@@ -22,7 +21,7 @@ struct ListView: View {
                     ScrollView (.vertical, showsIndicators: false){
                         if viewModelCH.isData == true {
                             ForEach(viewModelCH.characters , id: \.id) { item in
-                                NavigationLink(destination: DetailView(id: String(item.id))) {
+                                NavigationLink(destination: DetailView(url: item.url)) {
                                     HStack(spacing: 0.0){
                                         AsyncImage(url: URL(string: item.image)) { phase in
                                             switch phase {
@@ -30,7 +29,6 @@ struct ListView: View {
                                                 ProgressView()
                                             case .success(let image):
                                                 image
-                                                
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
                                                     .frame(width: UIScreen.main.bounds.width*0.25)
@@ -76,6 +74,7 @@ struct ListView: View {
                                 }
                                 
                             }
+                            
                         }else{
                             VStack {
                                 Image("morty")
@@ -83,8 +82,8 @@ struct ListView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: UIScreen.main.bounds.width*0.45)
                                     .padding(.vertical)
-                                Text("Bu Lokasiyonda \n Karakter Bulunamadı!")
-                                    .font(.largeTitle)
+                                Text("This Location \n Cannot Find Character!")
+                                    .font(.custom("DynaPuff", size: 30))
                                     .fontWeight(.light)
                                     .foregroundColor(Color.RMpurple)
                                     .multilineTextAlignment(.center)

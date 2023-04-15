@@ -1,5 +1,9 @@
 //import Foundation
 //
+//let numbers = [1, 2, 3, 4, 5]
+//let numberString = numbers.map { String($0) }.joined(separator: ", ")
+//print(numberString) // "1, 2, 3, 4, 5"
+//
 //class Sinan {
 //    var data: RickAndMortyModel?
 //    var characters: [Chracter] = []

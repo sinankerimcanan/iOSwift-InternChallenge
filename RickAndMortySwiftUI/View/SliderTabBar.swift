@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SliderTabBar: View {
-    @StateObject var viewModel = RMLocationViewModel()
-    @StateObject var viewModelCH = RMCharactersViewModel()
+    @StateObject var viewModel = RMSliderTabBarViewModel()
+    @StateObject var viewModelCH = RMListViewModel()
     @State var selectedItemID : Int = 1 //ID
     
     var body: some View {
@@ -39,7 +39,6 @@ struct SliderTabBar: View {
                                     }
                                 }
                         }
-                        
                         .foregroundColor(isSelected ? Color.RMpurple.opacity(1) : Color.RMpurple.opacity(0.5))
                         .frame(height: 40.0)
                         .padding(.horizontal)
@@ -56,8 +55,6 @@ struct SliderTabBar: View {
         }
     }
 }
-
-
 struct SliderTabBar_Previews: PreviewProvider {
     static var previews: some View {
         SliderTabBar()

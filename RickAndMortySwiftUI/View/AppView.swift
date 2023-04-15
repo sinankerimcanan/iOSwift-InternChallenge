@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AppView: View{
-    @StateObject var viewModel = RMLocationViewModel()
-    @StateObject var viewModelCH = RMCharactersViewModel()
+    @StateObject var viewModel = RMSliderTabBarViewModel()
+    @StateObject var viewModelCH = RMListViewModel()
     @State var selectedItemID : Int = 1 //ID
     
     var body: some View {
@@ -19,7 +19,7 @@ struct AppView: View{
                 SliderTabBar(viewModel: viewModel,viewModelCH: viewModelCH,selectedItemID: selectedItemID)
                 Spacer()
                 //Character List View
-                ListView(viewModel: viewModel,viewModelCH: viewModelCH,selectedItemID: selectedItemID)
+                ListView(viewModelCH: viewModelCH,selectedItemID: selectedItemID)
             }
             .toolbar{
                 ToolbarItem {
