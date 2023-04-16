@@ -1,10 +1,3 @@
-//
-//  ListFunc.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Sinan on 12.04.2023.
-//
-
 import Foundation
 import SwiftUI
 //MARK: Cindiyetine Göre Yanına simge ve çerçeve eklemeye yarayan Func

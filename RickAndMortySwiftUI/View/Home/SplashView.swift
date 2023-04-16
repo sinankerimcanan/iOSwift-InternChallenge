@@ -1,10 +1,3 @@
-//
-//  SplashView.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Sinan on 12.04.2023.
-//
-
 import SwiftUI
 
 struct SplashView: View {
@@ -12,7 +5,7 @@ struct SplashView: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     @State private var isFirst = UserDefaults.standard.bool(forKey: "splash")
-     
+    
     
     
     var body: some View {

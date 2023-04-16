@@ -1,10 +1,3 @@
-//
-//  DetailView.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Sinan on 12.04.2023.
-//
-
 import SwiftUI
 
 struct DetailView: View {@StateObject var viewModel = RMDetailViewModel()

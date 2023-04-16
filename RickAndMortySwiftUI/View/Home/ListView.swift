@@ -1,10 +1,3 @@
-//
-//  ListView.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Sinan on 9.04.2023.
-//
-
 import SwiftUI
 
 struct ListView: View {
@@ -32,7 +25,7 @@ struct ListView: View {
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
                                                     .frame(width:100)
-                                                    //.frame(width: UIScreen.main.bounds.width*0.25)
+                                                //.frame(width: UIScreen.main.bounds.width*0.25)
                                                     .cornerRadius(10)
                                                     .overlay(
                                                         RoundedRectangle(cornerRadius: 10)
@@ -78,7 +71,7 @@ struct ListView: View {
                             }
                             
                         }else{
-//MARK: - Eger lokasiyn içinde karakter yoksa gösterilcek ekran
+                            //MARK: - Eger lokasiyn içinde karakter yoksa gösterilcek ekran
                             VStack {
                                 Image("morty")
                                     .resizable()
@@ -91,10 +84,10 @@ struct ListView: View {
                                     .foregroundColor(Color.RMpurple)
                                     .multilineTextAlignment(.center)
                                     .padding(.top,10)
-                                    
+                                
                                 
                             }
-                                
+                            
                         }
                     }
                 }

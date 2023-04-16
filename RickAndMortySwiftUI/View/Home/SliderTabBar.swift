@@ -1,10 +1,3 @@
-//
-//  SliderTabBar.swift
-//  RickAndMortySwiftUI
-//
-//  Created by Sinan on 12.04.2023.
-//
-
 import SwiftUI
 
 struct SliderTabBar: View {
@@ -21,7 +14,7 @@ struct SliderTabBar: View {
                         Group {
                             Text(result.name)
                                 .font(.custom("DynaPuff", size: 16))
-                                
+                            
                                 .onTapGesture {
                                     print(result.id)//View Tab id
                                     // aynı yere tıklanıyorsa verileri tekrar çekme
