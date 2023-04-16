@@ -20,6 +20,7 @@ class RMDetailViewModel : ObservableObject{
 }
 
 extension RMDetailViewModel : RMDetailViewModelInterface{
+    //MARK: - Dizi olarak gelen Bölüm url dizisinin sonunda yazan bölümleri tek bir stringe atayan fonksiyon
     func generationUrl(urls : [String]) -> String{
         var episodesArray = [String]()
         
@@ -34,7 +35,7 @@ extension RMDetailViewModel : RMDetailViewModelInterface{
         let episodes = episodesArray.map{ String($0) }.joined(separator: ", ")
         return episodes
     }
-    
+//MARK: - Secilen karakterdeki bütün verileri çeken func
     func loadCharacteData(url: String) {
         guard let url = URL(string: url) else {
             return
@@ -52,7 +53,7 @@ extension RMDetailViewModel : RMDetailViewModelInterface{
                 }
             }, receiveValue: { [weak self] data in
                 self?.Character = data
-                print(self?.Character)
+//                print(self?.Character)
             })
             .store(in: &cancellables)
     }

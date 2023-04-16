@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ListView: View {
     @StateObject var viewModelCH = RMListViewModel()
-    @State var selectedItemID : Int = 1 //ID
     @State private var isLoading = true
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     
     var body: some View {
         HStack {
@@ -22,7 +22,7 @@ struct ListView: View {
                         if viewModelCH.isData == true {
                             ForEach(viewModelCH.characters , id: \.id) { item in
                                 NavigationLink(destination: DetailView(url: item.url)) {
-                                    HStack(spacing: 0.0){
+                                    HStack{
                                         AsyncImage(url: URL(string: item.image)) { phase in
                                             switch phase {
                                             case .empty:
@@ -31,7 +31,8 @@ struct ListView: View {
                                                 image
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
-                                                    .frame(width: UIScreen.main.bounds.width*0.25)
+                                                    .frame(width:100)
+                                                    //.frame(width: UIScreen.main.bounds.width*0.25)
                                                     .cornerRadius(10)
                                                     .overlay(
                                                         RoundedRectangle(cornerRadius: 10)
@@ -59,7 +60,8 @@ struct ListView: View {
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: UIScreen.main.bounds.height*0.06)
                                     }
-                                    .frame(width: UIScreen.main.bounds.width*0.85)
+                                    //.frame(width: UIScreen.main.bounds.width*0.85)
+                                    .frame(width: UIScreen.main.bounds.width*0.85 , height: 120)
                                     .padding(.horizontal)
                                     .background(LinearGradient(gradient: Gradient(stops: [
                                         .init(color: Color.RMgreen,location :0),
@@ -76,6 +78,7 @@ struct ListView: View {
                             }
                             
                         }else{
+//MARK: - Eger lokasiyn içinde karakter yoksa gösterilcek ekran
                             VStack {
                                 Image("morty")
                                     .resizable()
@@ -109,3 +112,6 @@ struct ListView_Previews: PreviewProvider {
         ListView()
     }
 }
+
+
+

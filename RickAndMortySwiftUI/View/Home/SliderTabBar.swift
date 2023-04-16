@@ -10,13 +10,13 @@ import SwiftUI
 struct SliderTabBar: View {
     @StateObject var viewModel = RMSliderTabBarViewModel()
     @StateObject var viewModelCH = RMListViewModel()
-    @State var selectedItemID : Int = 1 //ID
+    @State var selectedItemID : Int = 1
     
     var body: some View {
         ScrollViewReader { value in
             ScrollView(.horizontal , showsIndicators: false) {
                 HStack{
-                    ForEach(viewModel.results ?? [], id: \.id) { result in
+                    ForEach(viewModel.Location?.results ?? [], id: \.id) { result in
                         let isSelected = result.id == selectedItemID
                         Group {
                             Text(result.name)
@@ -28,12 +28,14 @@ struct SliderTabBar: View {
                                     withAnimation {
                                         value.scrollTo(result.id, anchor: .center)
                                     }
+                                    //aynı sekmeyi tıklandığında veri indirimini engelliyor
                                     if selectedItemID != result.id{
                                         viewModelCH.generationUrl(urls: result.residents)
                                     }
                                     selectedItemID = result.id
                                 }
                                 .onAppear{
+                                    //Eger view tekrar açıldığında sectiğim sekme ve id aynı ise verileri yüklüyor
                                     if isSelected{
                                         viewModelCH.generationUrl(urls: result.residents)
                                     }

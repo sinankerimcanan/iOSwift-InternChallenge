@@ -60,6 +60,7 @@ struct SplashView: View {
                 
                 .background(Color.RMbackground)
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             
         }
     }

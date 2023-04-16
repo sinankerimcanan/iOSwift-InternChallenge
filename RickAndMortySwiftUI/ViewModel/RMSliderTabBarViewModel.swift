@@ -13,8 +13,7 @@ protocol RMSliderTabBarViewModelInterface {
 }
 
 class RMSliderTabBarViewModel: ObservableObject {
-    @Published var info: RMInfo?
-    @Published var results: [RMResults]?
+    @Published var Location : RMLocation?
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -41,8 +40,7 @@ extension RMSliderTabBarViewModel : RMSliderTabBarViewModelInterface{
                     print("Data loaded successfully.")
                 }
             }, receiveValue: { [weak self] data in
-                self?.info = data.info
-                self?.results = data.results
+                self?.Location = data
             })
             .store(in: &cancellables)
     }

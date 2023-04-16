@@ -10,16 +10,15 @@ import SwiftUI
 struct AppView: View{
     @StateObject var viewModel = RMSliderTabBarViewModel()
     @StateObject var viewModelCH = RMListViewModel()
-    @State var selectedItemID : Int = 1 //ID
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack{
                 //Slider Bar View
-                SliderTabBar(viewModel: viewModel,viewModelCH: viewModelCH,selectedItemID: selectedItemID)
+                SliderTabBar(viewModel: viewModel,viewModelCH: viewModelCH)
                 Spacer()
                 //Character List View
-                ListView(viewModelCH: viewModelCH,selectedItemID: selectedItemID)
+                ListView(viewModelCH: viewModelCH)
             }
             .toolbar{
                 ToolbarItem {
@@ -31,13 +30,15 @@ struct AppView: View{
             }
             .background(Color.RMbackground)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(Color.RMpurple)
     }
 }
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
-        AppView()
-        
+        Group{
+            AppView()
+        }
     }
 }
 
